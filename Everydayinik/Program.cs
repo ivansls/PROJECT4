@@ -158,14 +158,6 @@ void Cursor(ConsoleKeyInfo key)
     {
         posicion++;
     }
-    else if (key.Key == ConsoleKey.RightArrow)
-    {
-        plusDay++;
-    }
-    else if (key.Key == ConsoleKey.LeftArrow)
-    {
-        plusDay--;
-    }
     else if (key.Key == ConsoleKey.Escape)
     {
         isListenning = false;
@@ -173,11 +165,22 @@ void Cursor(ConsoleKeyInfo key)
     Console.Clear();
 }
 
-
+void date2(ConsoleKeyInfo key)
+{
+    if (key.Key == ConsoleKey.RightArrow)
+    {
+        plusDay++;
+    }
+    else if (key.Key == ConsoleKey.LeftArrow)
+    {
+        plusDay--;
+    }
+}
 while (isListenning == true)
 {
     ConsoleKeyInfo key = Console.ReadKey();
     Cursor(key);
+    date2(key);
     zamet(key);
     Console.SetCursorPosition(0, 0);
     Console.WriteLine(now.AddDays(plusDay).ToLongDateString());
